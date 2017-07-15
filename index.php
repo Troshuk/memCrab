@@ -86,3 +86,6 @@ $man->setLastName('Mister');
 echo $man->getTitle()."\n";
 echo $man->getFirstName()."\n";
 echo $man->getLastName()."\n";
+
+#++++++++++++++++++++++#
+#Test#
