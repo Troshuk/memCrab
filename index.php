@@ -6,6 +6,8 @@ class MusicClass {
 	public static $musicName = "Nuvoile Biench";
 }
 
+// ЗМІНИ
+
 echo MusicClass::$musicName."\n";
 
 class Singelton {
