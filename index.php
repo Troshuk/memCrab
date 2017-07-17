@@ -2,6 +2,7 @@
 // merge, rebase, ferch, pull request, git flow, 
 // усе протестити, з 2-ма користувачами, різні варіанти і т.д. ...
 
+// зміни
 class MusicClass {
 	public static $musicName = "Nuvoile Biench";
 }
@@ -15,6 +16,7 @@ class Singelton {
 	protected function __construct(){
 		
 	}
+// зміни
 
 	protected function __clone(){
 
@@ -26,6 +28,7 @@ class Singelton {
 	}
 }
 
+// зміни
 echo Singelton::getInstance()."\n";
 
 class PeopleDB
@@ -48,6 +51,7 @@ class PeopleDB
     {
         $this->title = $title;
     }
+// зміни
 
     public function setFirstName($first_name)
     {
@@ -73,6 +77,7 @@ class PeopleDB
     {
         return $this->last_name;
     }
+// зміни
 
 }
 $DB = new mysqli('localhost', 'root', '');
@@ -81,6 +86,9 @@ $man->setTitle('Mr');
 $man->setFirstName('Mister');
 $man->setLastName('Mister');
 
+// зміни
 echo $man->getTitle()."\n";
 echo $man->getFirstName()."\n";
 echo $man->getLastName()."\n";
+// зміни
+++++++++++++++++++++++++++++++++
