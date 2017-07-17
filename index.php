@@ -7,6 +7,8 @@ class MusicClass {
 	public static $musicName = "Nuvoile Biench";
 }
 
+// ЗМІНИ
+
 echo MusicClass::$musicName."\n";
 
 class Singelton {
@@ -91,4 +93,6 @@ echo $man->getTitle()."\n";
 echo $man->getFirstName()."\n";
 echo $man->getLastName()."\n";
 // зміни
-++++++++++++++++++++++++++++++++
+
+// ++++++++++++++++++++++
+// Test
