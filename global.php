@@ -67,7 +67,7 @@ class PeopleDB
 
 class DB {
 
-	protected static $DB;
+	public static $DB;
 	protected static $host = 'localhost';
 	protected static $user = 'root';
 	protected static $password = '';
@@ -83,20 +83,42 @@ class DB {
 	}
 
 	public function __destruct() {
-		$this->DB->close();
+		// $this->DB->close();
+		unset($this->DB);
 	}
 
 	public static function getDBConnect() {
-		if (!isset(self::$DB)) self::$DB = new DB();
-		return self::$DB->DB;
+		if (!isset(self::$DB)) {
+			self::$DB = new self();
+			echo "Object isset";
+		} else {
+			echo "UnIsset Object";
+		}
+		return self::$DB;
+	}
+
+	public function getImageById($id) {
+		$sql = '
+			SELECT *
+			FROM images
+			WHERE id = '.$id;
+		$result =  $this->DB->query($sql);
+		return $result->fetch_array();
+	}
+
+	public function getAllProducts() {
+		$sql = '
+			SELECT *
+			FROM products
+		';
+		$result =  $this->DB->query($sql);
+		return $result->fetch_array();
 	}
 }
 
 $DB = DB::getDBConnect();
-$sql = '
-SELECT name
-FROM images
-WHERE id = 1;
-';
-$result = $DB->query($sql);
-print_r($result->fetch_array());
+$image = $DB->getImageById(2);
+print_r($image);
+$products = $DB->getAllProducts();
+print_r($products);
+$DB->__destruct();
