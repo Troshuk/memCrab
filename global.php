@@ -82,17 +82,16 @@ class DB {
 
 	}
 
-	public function __destruct() {
-		// $this->DB->close();
+	function __destruct() {
 		unset($this->DB);
 	}
 
 	public static function getDBConnect() {
-		if (!isset(self::$DB)) {
+		if (!isset(self::$DB) && empty(self::$DB)) {
 			self::$DB = new self();
-			echo "Object isset";
+			echo "DB create"."\n";
 		} else {
-			echo "UnIsset Object";
+			echo "DB isset"."\n";
 		}
 		return self::$DB;
 	}
@@ -114,9 +113,21 @@ class DB {
 		$result =  $this->DB->query($sql);
 		return $result->fetch_array();
 	}
+
+    public function __sleep()
+    {
+        return array('DB', 'host', 'user', 'password', 'dbName');
+    }
+
+    public function __wakeup()
+    {
+        $this->getDBConnect();
+    }
 }
 
 $DB = DB::getDBConnect();
+$DB_2 = DB::getDBConnect();
+
 $image = $DB->getImageById(2);
 print_r($image);
 $products = $DB->getAllProducts();
