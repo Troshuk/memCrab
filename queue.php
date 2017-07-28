@@ -3,7 +3,7 @@ require_once __DIR__ . '/vendor/autoload.php';
 use PhpAmqpLib\Connection\AMQPStreamConnection;
 use PhpAmqpLib\Message\AMQPMessage;
 
-$connection = new AMQPStreamConnection('localhost', 5672, 'guest', 'guest');
+$connection = new AMQPStreamConnection('localhost', 15672, 'guest', 'guest');
 $channel = $connection->channel();
 // $channel = $connection->chanel();
 // $connection->connect();
@@ -15,7 +15,5 @@ $channel = $connection->channel();
 // $testExchange->publish('Hello buddy!', 'route_to_everybody');
 
 // $rabbit->disconnect();
-
-// change
 
 //change 2
