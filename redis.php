@@ -65,3 +65,19 @@ $redis->sismember($key, 'england'); // false
 $value = $redis->smembers($key); // ['france', 'germany']
 
 print_r($value);
+
+
+$key = "expire in 1 hour";
+$redis->expire($key, 3600); // expires in 1 hour
+$redis->expireat($key, time() + 3600); // expires in 1 hour
+
+sleep(10); // don't try this, just an illustration for time spent
+
+$value = $redis->ttl($key); // 3000, ergo expires in 50 minutes
+
+echo "\n";
+echo $value . "\n";
+
+$value = $redis->persist($key);
+
+echo $value . "\n";
