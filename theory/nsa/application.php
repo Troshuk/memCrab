@@ -1,6 +1,6 @@
 <?php
 
-namespace nsa;
+namespace Nsa;
 
 class Application
 {
