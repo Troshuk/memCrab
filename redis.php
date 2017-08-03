@@ -7,77 +7,92 @@ $redis = new Predis\Client(array(
 "host" => "127.0.0.1",
 "port" => 6379));
 
-// помещение строки "Hello world"
-$redis->set('message', 'Hello world');
+// // помещение строки "Hello world"
+// $redis->set('message', 'Hello world');
 
-// получаем строку по ключу
-$value = $redis->get('message');
+// // получаем строку по ключу
+// $value = $redis->get('message');
 
-// Hello world
-echo $value . "\n";
+// // Hello world
+// echo $value . "\n";
 
-echo ($redis->exists('message')) ? "Oui" : "please populate the message key";
-echo "\n";
+// echo ($redis->exists('message')) ? "Oui" : "please populate the message key";
+// echo "\n";
 
-$redis->set("counter", 0);
-$redis->incr("counter");
-$redis->incr("counter");
-$redis->decr("counter");
-$value = $redis->get('counter');
-echo $value . "\n";
+// $redis->set("counter", 0);
+// $redis->incr("counter");
+// $redis->incr("counter");
+// $redis->decr("counter");
+// $value = $redis->get('counter');
+// echo $value . "\n";
 
 
-$redis->set("counter", 0);
-$redis->incrby("counter", 15);
-$redis->incrby("counter", 5);
-$redis->decrby("counter", 10);
-$value = $redis->get('counter');
-echo $value . "\n";
+// $redis->set("counter", 0);
+// $redis->incrby("counter", 15);
+// $redis->incrby("counter", 5);
+// $redis->decrby("counter", 10);
+// $value = $redis->get('counter');
+// echo $value . "\n";
 
-print_r($redis->keys('*'));
+// print_r($redis->keys('*'));
 
-$redis->rpush("languages", "french"); // [french]
-$redis->rpush("languages", "arabic"); // [french, arabic]
-// $value = $redis->get('languages');
+// $redis->rpush("languages", "french"); // [french]
+// $redis->rpush("languages", "arabic"); // [french, arabic]
+// // $value = $redis->get('languages');
+// // print_r($value);
+
+// $redis->lpush("languages", "english"); // [english, french, arabic]
+// $redis->lpush("languages", "swedish"); // [swedish, english, french, arabic]
+
+// $redis->lpop("languages"); // [english, french, arabic]
+// $redis->rpop("languages"); // [english, french]
+
+// $redis->llen("languages"); // 2
+
+// $value = $redis->lrange("languages", 0, -1); // returns all elements
+// $redis->lrange("languages", 0, 1); // [english, french]
 // print_r($value);
 
-$redis->lpush("languages", "english"); // [english, french, arabic]
-$redis->lpush("languages", "swedish"); // [swedish, english, french, arabic]
+// $key = "countries";
+// $redis->sadd($key, 'china');
+// $redis->sadd($key, ['england', 'france', 'germany']);
+// $redis->sadd($key, 'china'); // this entry is ignored
 
-$redis->lpop("languages"); // [english, french, arabic]
-$redis->rpop("languages"); // [english, french]
+// $redis->srem($key, ['england', 'china']);
 
-$redis->llen("languages"); // 2
+// $redis->sismember($key, 'england'); // false
 
-$value = $redis->lrange("languages", 0, -1); // returns all elements
-$redis->lrange("languages", 0, 1); // [english, french]
-print_r($value);
+// $value = $redis->smembers($key); // ['france', 'germany']
 
-$key = "countries";
-$redis->sadd($key, 'china');
-$redis->sadd($key, ['england', 'france', 'germany']);
-$redis->sadd($key, 'china'); // this entry is ignored
-
-$redis->srem($key, ['england', 'china']);
-
-$redis->sismember($key, 'england'); // false
-
-$value = $redis->smembers($key); // ['france', 'germany']
-
-print_r($value);
+// print_r($value);
 
 
-$key = "expire in 1 hour";
-$redis->expire($key, 3600); // expires in 1 hour
-$redis->expireat($key, time() + 3600); // expires in 1 hour
+// $key = "expire in 1 hour";
+// $redis->expire($key, 3600); // expires in 1 hour
+// $redis->expireat($key, time() + 3600); // expires in 1 hour
 
-sleep(10); // don't try this, just an illustration for time spent
+// sleep(10); // don't try this, just an illustration for time spent
 
-$value = $redis->ttl($key); // 3000, ergo expires in 50 minutes
+// $value = $redis->ttl($key); // 3000, ergo expires in 50 minutes
 
-echo "\n";
-echo $value . "\n";
+// echo "\n";
+// echo $value . "\n";
 
-$value = $redis->persist($key);
+// $value = $redis->persist($key);
 
-echo $value . "\n";
+// echo $value . "\n";
+
+$start = microtime(true);
+
+for ($i = 0; $i < 100; $i++) {
+	$key = "product-$i";
+	$redis->sadd($key, ['water-' . $i, $i + $i * 2, $i * 2]);
+}
+
+// for ($i = 0; $i < 100; $i++) {
+// 	$key = "product-$i";
+// 	$value = $redis->smembers($key);
+// 	print_r($value);
+// }
+
+echo round(microtime(true) - $start, 4) . "c. \n";
