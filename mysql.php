@@ -1,9 +1,9 @@
 <?php
 $DB = new mysqli('localhost', 'root', '123456', 'products');
-
+/*
 $start = microtime(true);
 
-for ($i = 0; $i < 100; $i++) {
+for ($i = 0; $i < 1000; $i++) {
 	$name = "name-$i";
 	$price = $i + $i * 2;
 	$count = $i * 2;
@@ -12,8 +12,19 @@ for ($i = 0; $i < 100; $i++) {
 	$DB->query($sql);
 }
 
-echo round(microtime(true) - $start, 4) . "c. \n";
+echo round(microtime(true) - $start, 4) . "c. \n";*/
 
+
+/*
+$start = microtime(true);
+
+for ($i = 2000; $i < 2100; $i++) {
+	$sql = 'SELECT * FROM poduct WHERE id=$i';
+	$result =  $DB->query($sql);
+}
+
+echo round(microtime(true) - $start, 4) . "c. \n";
+*/
 /*
 $sql = 'SELECT * FROM poduct';
 $result =  $DB->query($sql);
