@@ -84,15 +84,15 @@ $redis = new Predis\Client(array(
 
 $start = microtime(true);
 
-for ($i = 0; $i < 100; $i++) {
-	$key = "product-$i";
-	$redis->sadd($key, ['water-' . $i, $i + $i * 2, $i * 2]);
-}
-
-// for ($i = 0; $i < 100; $i++) {
+// for ($i = 0; $i < 1000; $i++) {
 // 	$key = "product-$i";
-// 	$value = $redis->smembers($key);
-// 	print_r($value);
+// 	$redis->sadd($key, ['water-' . $i, $i + $i * 2, $i * 2]);
 // }
+
+for ($i = 0; $i < 1000; $i++) {
+	$key = "product-$i";
+	$value = $redis->smembers($key);
+	// print_r($value);
+}
 
 echo round(microtime(true) - $start, 4) . "c. \n";
