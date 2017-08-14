@@ -26,7 +26,7 @@ echo round( ( memory_get_usage() ) / 1024 / 1024, 5 ) . " MB (після) \n";
 
 
 echo round( ( memory_get_usage() ) / 1024 / 1024, 5 ) . " MB (до) \n";
-$z = [];
+
 echo " Update array \n";
 for ($i=0; $i < 1000; $i++) { 
 	$z[] = "$i$i$i$i$i$i$i$i$i$i$i$i$i$i$i$i$i$i$i$i$i$i$i$i$i$i$i$i$i$i$i$i";

@@ -1,5 +1,10 @@
 <?php
-$DB = new mysqli('localhost', 'root', '123456', 'products');
+$DB = new mysqli('localhost', 'root', '', 'products_lang');
+
+$sql = 'SELECT * FROM products_lang';
+$result =  $DB->query($sql);
+print_r($result->fetch_All());
+
 /*
 $start = microtime(true);
 

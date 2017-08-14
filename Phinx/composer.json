@@ -1,0 +1,12 @@
+{
+    "name": "memcrab/phinx",
+    "authors": [
+        {
+            "name": "Denis",
+            "email": "Troshuk@gmail.com"
+        }
+    ],
+    "require": {
+        "robmorgan/phinx": "^0.8.1"
+    }
+}

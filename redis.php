@@ -99,5 +99,5 @@ $redis = new Predis\Client(array(
 
 $start = microtime(true);
 $value = $redis->keys('*');
-print_r($value);
 echo round(microtime(true) - $start, 4) . "c. \n";
+echo count($value) . "\n";
