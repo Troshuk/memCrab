@@ -1,5 +1,6 @@
 {
     "require" : {
-        "php-amqplib/php-amqplib" : ">=2.6.1"
+        "php-amqplib/php-amqplib" : ">=2.6.1",
+        "react/react": "^0.4.2"
     }
 }

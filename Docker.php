@@ -147,6 +147,7 @@ docker restart <container name>
 
 <12> # после этого переходишь к docker-compose
 docker-compose.yml
+docker-compose up -d
 docker-compose up --build
 docker-compose ps
 docker-compose stop <name>
@@ -154,3 +155,8 @@ docker-compose start <name>
 docker-compose rm <name>
 docker-compose down
 docker-compose exec <name> bash
+docker image ls
+docker-machine ip
+http://192.168.99.100:5000
+docker-compose run web env
+docker-compose down --volumes
